@@ -68,13 +68,21 @@ F1-Score & 0.000 \\
 \end{table}
 
 \subsection{Agentic Explanation Examples}
-Our framework successfully generates structured summaries for various cases. 
+Our framework successfully generates structured summaries for various cases. Figure~\ref{fig:tp} and Figure~\ref{fig:tn} present qualitative examples correlating the model output with the input 12-lead ECG signals.
 
-\textbf{Example True Positive Case:} 
-\textit{"N/A"}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/ecg_example_tp.png}
+\caption{\textbf{True Positive Case:} \textit{"N/A"}}
+\label{fig:tp}
+\end{figure}
 
-\textbf{Example True Negative Case:} 
-\textit{"The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/ecg_example_tn.png}
+\caption{\textbf{True Negative Case:} \textit{"The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."}}
+\label{fig:tn}
+\end{figure}
 
 \textbf{Example False Positive Case:} 
 \textit{"N/A"}

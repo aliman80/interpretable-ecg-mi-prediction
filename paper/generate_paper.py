@@ -94,13 +94,21 @@ F1-Score & {metrics['F1_Score']:.3f} \\\\
 \\end{{table}}
 
 \\subsection{{Agentic Explanation Examples}}
-Our framework successfully generates structured summaries for various cases. 
+Our framework successfully generates structured summaries for various cases. Figure~\\ref{{fig:tp}} and Figure~\\ref{{fig:tn}} present qualitative examples correlating the model output with the input 12-lead ECG signals.
 
-\\textbf{{Example True Positive Case:}} 
-\\textit{{"{example_tp}"}}
+\\begin{{figure}}[h]
+\\centering
+\\includegraphics[width=\\linewidth]{{figures/ecg_example_tp.png}}
+\\caption{{\\textbf{{True Positive Case:}} \\textit{{"{example_tp}"}}}}
+\\label{{fig:tp}}
+\\end{{figure}}
 
-\\textbf{{Example True Negative Case:}} 
-\\textit{{"{example_tn}"}}
+\\begin{{figure}}[h]
+\\centering
+\\includegraphics[width=\\linewidth]{{figures/ecg_example_tn.png}}
+\\caption{{\\textbf{{True Negative Case:}} \\textit{{"{example_tn}"}}}}
+\\label{{fig:tn}}
+\\end{{figure}}
 
 \\textbf{{Example False Positive Case:}} 
 \\textit{{"{example_fp}"}}
