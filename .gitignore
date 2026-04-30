@@ -4,3 +4,6 @@ __pycache__/
 .DS_Store
 .ipynb_checkpoints/
 results/best_model.pth
+results/*.csv
+results/*.json
+results/*.png

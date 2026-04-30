@@ -44,25 +44,15 @@ def evaluate_model(X_test, y_test, df_test, model_path='results/best_model.pth',
     # Compute metrics safely for small sample sizes
     metrics = {}
     
-    try:
-        metrics['AUROC'] = roc_auc_score(y_test, all_probs)
-    except ValueError:
-        metrics['AUROC'] = 0.5
-        
-    try:
-        metrics['AUPRC'] = average_precision_score(y_test, all_probs)
-    except ValueError:
-        metrics['AUPRC'] = 0.5
+    metrics['AUROC'] = roc_auc_score(y_test, all_probs)
+    metrics['AUPRC'] = average_precision_score(y_test, all_probs)
         
     metrics['Accuracy'] = accuracy_score(y_test, all_preds)
     metrics['Precision'] = precision_score(y_test, all_preds, zero_division=0)
     metrics['Recall'] = recall_score(y_test, all_preds, zero_division=0)
     
-    try:
-        tn, fp, fn, tp = confusion_matrix(y_test, all_preds).ravel()
-        metrics['Specificity'] = tn / (tn + fp + 1e-8)
-    except ValueError:
-        metrics['Specificity'] = 0.0
+    tn, fp, fn, tp = confusion_matrix(y_test, all_preds).ravel()
+    metrics['Specificity'] = tn / (tn + fp + 1e-8)
         
     metrics['F1_Score'] = f1_score(y_test, all_preds, zero_division=0)
     
@@ -81,11 +71,8 @@ def evaluate_model(X_test, y_test, df_test, model_path='results/best_model.pth',
     # Generate and save plots
     # ROC Curve
     plt.figure()
-    try:
-        fpr, tpr, _ = roc_curve(y_test, all_probs)
-        plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {metrics['AUROC']:.3f})")
-    except Exception:
-        plt.plot([0, 1], [0, 1], label="Failed to generate ROC")
+    fpr, tpr, _ = roc_curve(y_test, all_probs)
+    plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {metrics['AUROC']:.3f})")
         
     plt.plot([0, 1], [0, 1], 'k--')
     plt.xlabel("False Positive Rate")
@@ -97,11 +84,8 @@ def evaluate_model(X_test, y_test, df_test, model_path='results/best_model.pth',
     
     # PR Curve
     plt.figure()
-    try:
-        precision_vals, recall_vals, _ = precision_recall_curve(y_test, all_probs)
-        plt.plot(recall_vals, precision_vals, label=f"PR Curve (AUC = {metrics['AUPRC']:.3f})")
-    except Exception:
-        plt.plot([0, 1], [0, 1], label="Failed to generate PR")
+    precision_vals, recall_vals, _ = precision_recall_curve(y_test, all_probs)
+    plt.plot(recall_vals, precision_vals, label=f"PR Curve (AUC = {metrics['AUPRC']:.3f})")
         
     plt.xlabel("Recall")
     plt.ylabel("Precision")

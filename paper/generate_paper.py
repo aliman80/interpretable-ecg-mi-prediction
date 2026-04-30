@@ -4,25 +4,14 @@ import os
 
 def generate_latex():
     # Load metrics
-    try:
-        with open('../results/metrics.json', 'r') as f:
-            metrics = json.load(f)
-    except FileNotFoundError:
-        metrics = {
-            "AUROC": 0.0, "AUPRC": 0.0, "Accuracy": 0.0, 
-            "Precision": 0.0, "Recall": 0.0, "Specificity": 0.0, "F1_Score": 0.0
-        }
+    with open('../results/metrics.json', 'r') as f:
+        metrics = json.load(f)
     
     # Load error analysis for case examples
-    try:
-        error_df = pd.read_csv('../results/error_analysis.csv')
-        example_tp = error_df[error_df['case_type'] == 'True Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'True Positive'].empty else "N/A"
-        example_fp = error_df[error_df['case_type'] == 'False Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'False Positive'].empty else "N/A"
-        example_tn = "The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."
-    except Exception:
-        example_tp = "N/A"
-        example_fp = "N/A"
-        example_tn = "N/A"
+    error_df = pd.read_csv('../results/error_analysis.csv')
+    example_tp = error_df[error_df['case_type'] == 'True Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'True Positive'].empty else "N/A"
+    example_fp = error_df[error_df['case_type'] == 'False Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'False Positive'].empty else "N/A"
+    example_tn = "The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."
         
     latex_content = f"""\\documentclass[10pt,twocolumn,letterpaper]{{article}}
 \\usepackage{{times}}
