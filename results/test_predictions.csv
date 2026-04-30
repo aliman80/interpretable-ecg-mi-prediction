@@ -1,0 +1,6 @@
+ecg_id,true_label,predicted_probability,predicted_label,strat_fold
+9,0,0.48095524,0,10
+38,0,0.48708844,0,10
+40,0,0.48783433,0,10
+57,0,0.4803705,0,10
+59,0,0.47251672,0,10
