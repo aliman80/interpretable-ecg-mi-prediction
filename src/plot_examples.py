@@ -40,7 +40,7 @@ if __name__ == "__main__":
         record_name='00001_lr', 
         pn_dir='ptb-xl/1.0.3/records100/00000',
         title='12-Lead ECG: Normal Sinus Rhythm (True Negative Example)',
-        save_path='../paper/figures/ecg_example_tn.png'
+        save_path='paper/figures/ecg_example_tn.png'
     )
     
     # Generic MI ECG (TP)
@@ -49,5 +49,5 @@ if __name__ == "__main__":
         record_name='00004_lr', 
         pn_dir='ptb-xl/1.0.3/records100/00000',
         title='12-Lead ECG: Myocardial Infarction (True Positive Example)',
-        save_path='../paper/figures/ecg_example_tp.png'
+        save_path='paper/figures/ecg_example_tp.png'
     )
