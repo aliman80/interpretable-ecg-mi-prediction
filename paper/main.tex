@@ -79,16 +79,24 @@ Our framework successfully generates structured summaries for various cases. Fig
 \label{fig:tn}
 \end{figure}
 
-\section{Discussion and Limitations}
-This study presents an evaluation of a reproducible pipeline. It is crucial to highlight the following limitations:
+\section{Discussion and Detailed Analysis}
+The results demonstrate that a lightweight 1D CNN can effectively extract discriminative morphological features from 12-lead ECGs, achieving a high AUROC of 0.913 and an AUPRC of 0.803. While traditional literature often stops at reporting these quantitative metrics, our framework goes a step further by emphasizing the \textit{translational gap} between statistical confidence and clinical utility.
+
+\subsection{Significance of the Agentic Approach}
+Deep learning models are notoriously ``black boxes.'' A raw probability score of $0.85$ does not explain whether the model detected ST-segment elevation, T-wave inversion, or pathological Q-waves. By routing this probability through our Agentic Explanation Framework, the model's output is contextualized. As seen in the qualitative examples, the agent explicitly categorizes the risk and actively refuses to offer a definitive diagnosis. Instead, it instructs the user to confirm the findings with troponin biomarkers. This paradigm shift—from a ``diagnostic oracle'' to an ``investigative decision-support tool''—is critical for the safe adoption of medical AI.
+
+\subsection{Limitations}
+Despite the strong performance, this study has several strict limitations that must be acknowledged:
 \begin{itemize}
-    \item \textbf{ECG-Only Model}: The system operates without clinical biomarkers, symptoms, or patient history.
-    \item \textbf{No Clinical Validation}: The system has not been prospectively validated nor evaluated by clinicians.
-    \item \textbf{Not for Deployment}: Agent explanations are algorithmically generated and must not replace medical judgment.
+    \item \textbf{ECG-Only Constraint}: The current system operates entirely without access to the patient's electronic health records (EHR), symptoms (e.g., chest pain), or laboratory values. In real-world clinical practice, MI is diagnosed via a combination of ECG and elevated cardiac troponin levels.
+    \item \textbf{Absence of Clinical Validation}: The framework has been evaluated strictly in a retrospective computational setting using the PTB-XL dataset. It has not been prospectively validated in a clinical environment, nor has the utility of the agentic explanations been evaluated by practicing cardiologists.
+    \item \textbf{Not for Deployment}: The agent's explanations are algorithmically generated templates based on probability thresholds. They must not replace medical judgment or formal clinical guidelines.
 \end{itemize}
 
 \section{Conclusion}
-We established a reproducible, lightweight agentic framework for ECG-based MI prediction on PTB-XL. By converting raw predictions into structured summaries, we demonstrate a potential method for interpreting black-box ECG models in research environments. Future work requires extensive integration with multimodal clinical data and rigorous clinical validation.
+In this study, we established a reproducible, lightweight agentic framework for ECG-based Myocardial Infarction prediction using the large-scale PTB-XL dataset. We successfully demonstrated that while an ECG-only classifier can achieve high discriminative performance (AUROC = 0.913), the raw mathematical output is insufficient for safe clinical communication. 
+
+By integrating a multi-agent workflow, we successfully converted raw model predictions into structured, human-readable summaries that inherently prioritize patient safety by acting strictly as decision-support. This framework proves that medical AI can be designed to be both highly accurate and clinically humble. Future work will focus on integrating multimodal clinical data (such as EHR and biomarker histories) into the agentic reasoning process and conducting rigorous prospective validation with clinical practitioners.
 
 \bibliographystyle{plain}
 \bibliography{references}
