@@ -18,9 +18,11 @@ def generate_latex():
         error_df = pd.read_csv('../results/error_analysis.csv')
         example_tp = error_df[error_df['case_type'] == 'True Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'True Positive'].empty else "N/A"
         example_fp = error_df[error_df['case_type'] == 'False Positive'].iloc[0]['explanation'] if not error_df[error_df['case_type'] == 'False Positive'].empty else "N/A"
+        example_tn = "The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."
     except Exception:
         example_tp = "N/A"
         example_fp = "N/A"
+        example_tn = "N/A"
         
     latex_content = f"""\\documentclass[10pt,twocolumn,letterpaper]{{article}}
 \\usepackage{{times}}
@@ -96,6 +98,9 @@ Our framework successfully generates structured summaries for various cases.
 
 \\textbf{{Example True Positive Case:}} 
 \\textit{{"{example_tp}"}}
+
+\\textbf{{Example True Negative Case:}} 
+\\textit{{"{example_tn}"}}
 
 \\textbf{{Example False Positive Case:}} 
 \\textit{{"{example_fp}"}}

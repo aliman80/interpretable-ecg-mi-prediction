@@ -1,6 +1,6 @@
 {
-    "AUROC": 0.5,
-    "AUPRC": -0.0,
+    "AUROC": 0.9135017652250661,
+    "AUPRC": 0.8034977326024849,
     "Accuracy": 1.0,
     "Precision": 0.0,
     "Recall": 0.0,

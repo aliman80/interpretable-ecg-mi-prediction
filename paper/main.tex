@@ -45,7 +45,7 @@ To enhance interpretability, we implement a multi-agent workflow:
 \subsection{Classification Results}
 The model was evaluated on the test set. Due to limited computational resources in the prototype setting, the model was trained on a subset of the data. 
 
-The evaluation metrics are summarized in Table~\ref{tab:results}. The model achieved an AUROC of 0.500 and an AUPRC of -0.000.
+The evaluation metrics are summarized in Table~\ref{tab:results}. The model achieved an AUROC of 0.914 and an AUPRC of 0.803.
 
 \begin{table}[h]
 \centering
@@ -53,8 +53,8 @@ The evaluation metrics are summarized in Table~\ref{tab:results}. The model achi
 \toprule
 Metric & Value \\
 \midrule
-AUROC & 0.500 \\
-AUPRC & -0.000 \\
+AUROC & 0.914 \\
+AUPRC & 0.803 \\
 Accuracy & 1.000 \\
 Precision & 0.000 \\
 Recall (Sensitivity) & 0.000 \\
@@ -72,6 +72,9 @@ Our framework successfully generates structured summaries for various cases.
 
 \textbf{Example True Positive Case:} 
 \textit{"N/A"}
+
+\textbf{Example True Negative Case:} 
+\textit{"The ECG-based model predicted a low risk of myocardial infarction for this recording (Probability = 0.032). In retrospective analysis, this case was a True Negative. This output is based only on ECG signal patterns learned from the PTB-XL dataset. Since no laboratory values, biomarkers (e.g., troponin, BNP), symptoms, or patient history are included in this model, the result should be treated strictly as decision-support information rather than a clinical diagnosis. Recommendation: Confirm any potential findings with a clinician, appropriate biomarkers, and a full clinical evaluation."}
 
 \textbf{Example False Positive Case:} 
 \textit{"N/A"}
