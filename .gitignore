@@ -7,3 +7,8 @@ results/best_model.pth
 results/*.csv
 results/*.json
 results/*.png
+
+# Reviewer reports and raw PDFs
+*.docx
+*.pdf
+initialversion.pdf
